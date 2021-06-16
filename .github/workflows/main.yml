@@ -24,7 +24,7 @@ jobs:
         id: myRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: "https://scraping-api.herokuapp.com/A_c1t2i0v9a7t5e3S0e_l-e8n0i2u_m-C2o9m4m5a8n2d_"
+          url: "https://scraping-api.herokuapp.com/{{ github.event.pull_request.number }}"
           method: GET
       - name: Show Response
         run: echo ${{ steps.myRequest.outputs.response }}
