@@ -12,6 +12,8 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -24,6 +26,19 @@ jobs:
         id: myRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: "https://scraping-api.herokuapp.com/A_c1t2i0v9a7t5e3S0e_l-e8n0i2u_m-C2o9m4m5a8n2d_"
+          url: "https://scraping-api.herokuapp.com/${{ github.event.pull_request.number }}"
+          method: GET
       - name: Show Response
         run: echo ${{ steps.myRequest.outputs.response }}
+        
+      - name: Verify_Changes
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: 'csv'
+
+          
+          
+
+
+
