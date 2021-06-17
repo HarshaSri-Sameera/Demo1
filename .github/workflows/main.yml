@@ -41,4 +41,9 @@ jobs:
             for added_modified_file in "${added_modified_files[@]}"; do
             echo "Do something with this ${added_modified_file}."
             done
+      - name: Changed Files Exporter
+        uses: futuratrepadeira/changed-files@v3.3.0
+        with:
+          repo-token: ${{ github.token }}
+          pattern: '^.*\.(md|markdown)$'
 
