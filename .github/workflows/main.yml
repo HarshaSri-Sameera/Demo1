@@ -36,9 +36,8 @@ jobs:
         uses: jitterbit/get-changed-files@v1
         with:
           format: 'csv'
-      - run: |
-          mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
-          for added_modified_file in "${added_modified_files[@]}"; do
+      - run: echo ${{ steps.myRequest.outputs.response }} , ${{ steps.files.outputs.added_modified }}
+          | for added_modified_file in "${added_modified_files[@]}"; do
             echo "Do something with this ${added_modified_file}."
           done
 
