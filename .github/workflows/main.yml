@@ -36,6 +36,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
         with:
           format: 'csv'
+          run: echo ${{csv}}
 
           
           
